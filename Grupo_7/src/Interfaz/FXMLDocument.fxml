@@ -1,14 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication7.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="313.0" prefWidth="622.0" style="-fx-background-color: #fafbfd;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication7.FXMLDocumentController">
     <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <ImageView fitHeight="313.0" fitWidth="408.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recursos/fondo2.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="346.0" layoutY="29.0" prefHeight="46.0" prefWidth="276.0" text="Explorador de Archivos" textAlignment="CENTER">
+         <font>
+            <Font name="Lucida Sans Demibold" size="21.0" />
+         </font>
+      </Label>
+      <Button fx:id="visualizar" layoutX="389.0" layoutY="204.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="161.0" style="-fx-background-color: #d43847;" text="Visualizar" textFill="#fcfcfc">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="389.0" layoutY="253.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="161.0" style="-fx-background-color: #20b1aa;" text="Personalizar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <TextField layoutX="339.0" layoutY="88.0" prefHeight="39.0" prefWidth="261.0" />
+      <Button layoutX="389.0" layoutY="155.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="161.0" style="-fx-background-color: #838383;" text="Buscar Ruta" textFill="#fffefe">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <effect>
+            <Blend />
+         </effect>
+      </Button>
     </children>
 </AnchorPane>
