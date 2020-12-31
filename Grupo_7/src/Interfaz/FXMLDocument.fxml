@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="313.0" prefWidth="622.0" style="-fx-background-color: #fafbfd;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="ventana1" prefHeight="313.0" prefWidth="622.0" style="-fx-background-color: #fafbfd;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.FXMLDocumentController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <ImageView fitHeight="313.0" fitWidth="408.0" pickOnBounds="true" preserveRatio="true">
@@ -33,8 +33,8 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <TextField layoutX="339.0" layoutY="88.0" prefHeight="39.0" prefWidth="261.0" />
-      <Button layoutX="389.0" layoutY="155.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="161.0" style="-fx-background-color: #838383;" text="Buscar Ruta" textFill="#fffefe">
+      <TextField fx:id="escribirRuta" layoutX="339.0" layoutY="88.0" prefHeight="39.0" prefWidth="261.0" />
+      <Button layoutX="389.0" layoutY="155.0" mnemonicParsing="false" onAction="#BuscarRuta" prefHeight="39.0" prefWidth="161.0" style="-fx-background-color: #838383;" text="Buscar Ruta" textFill="#fffefe">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
