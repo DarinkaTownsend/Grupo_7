@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="ventana1" prefHeight="313.0" prefWidth="622.0" style="-fx-background-color: #fafbfd;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="ventana1" prefHeight="313.0" prefWidth="664.0" style="-fx-background-color: #fafbfd;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.FXMLDocumentController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <ImageView fitHeight="313.0" fitWidth="408.0" pickOnBounds="true" preserveRatio="true">
@@ -18,25 +18,25 @@
             <Image url="@../recursos/fondo2.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="346.0" layoutY="29.0" prefHeight="46.0" prefWidth="276.0" text="Explorador de Archivos" textAlignment="CENTER">
+      <Label layoutX="362.0" layoutY="25.0" prefHeight="46.0" prefWidth="276.0" text="Explorador de Archivos" textAlignment="CENTER">
          <font>
             <Font name="Lucida Sans Demibold" size="21.0" />
          </font>
       </Label>
-      <Button fx:id="visualizar" layoutX="389.0" layoutY="204.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="161.0" style="-fx-background-color: #d43847;" text="Visualizar" textFill="#fcfcfc">
+      <Button fx:id="visualizar" layoutX="420.0" layoutY="157.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="161.0" style="-fx-background-color: #d43847;" text="Visualizar" textFill="#fcfcfc">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="389.0" layoutY="253.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="161.0" style="-fx-background-color: #20b1aa;" text="Personalizar" textFill="WHITE">
+      <Button layoutX="420.0" layoutY="216.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="161.0" style="-fx-background-color: #20b1aa;" text="Personalizar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
       <TextField fx:id="escribirRuta" layoutX="339.0" layoutY="88.0" prefHeight="39.0" prefWidth="261.0" />
-      <Button layoutX="389.0" layoutY="155.0" mnemonicParsing="false" onAction="#BuscarRuta" prefHeight="39.0" prefWidth="161.0" style="-fx-background-color: #838383;" text="Buscar Ruta" textFill="#fffefe">
+      <Button layoutX="606.0" layoutY="88.0" mnemonicParsing="false" onAction="#BuscarRuta" prefHeight="39.0" prefWidth="32.0" style="-fx-background-color: #838383;" text="..." textFill="#fffefe">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
          <effect>
             <Blend />
