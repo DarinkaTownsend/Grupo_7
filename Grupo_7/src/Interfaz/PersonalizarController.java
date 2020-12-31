@@ -5,12 +5,16 @@
  */
 package Interfaz;
 
+import java.awt.Color;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javax.swing.JColorChooser;
+import javax.swing.JPanel;
 
 /**
  * FXML Controller class
@@ -19,9 +23,11 @@ import javafx.stage.Stage;
  */
 public class PersonalizarController implements Initializable {
     private Stage stage;
+    private Color cambioColor;
     @FXML
     private ChoiceBox Extensiones;
-    
+    @FXML
+    private Rectangle VistaColor;
     
     @FXML
     public void AgregarExtension(){
@@ -35,9 +41,14 @@ public class PersonalizarController implements Initializable {
     
     @FXML
     public void EscogerColor(){
-        
+        JPanel contentPane = new JPanel();
+        Color color=JColorChooser.showDialog(contentPane, "Elige un color", Color.BLUE);
+        VistaColor.setStyle("-fx-background-color:"+color2HexString(color));        
     }
-    
+    public String color2HexString(Color color) {
+        return "#" + Integer.toHexString(color.getRGB() & 0x00ffffff);
+    }
+
     @FXML
     public void AplicarCambios(){
         

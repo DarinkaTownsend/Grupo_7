@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.media.*?>
 <?import java.lang.*?>
@@ -26,7 +27,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="385.0" layoutY="137.0" mnemonicParsing="false" onAction="#EscogerColor" prefHeight="126.0" prefWidth="138.0" style="-fx-background-color: #838383;" text="Escoger color" textFill="#fffefe">
+      <Button layoutX="387.0" layoutY="181.0" mnemonicParsing="false" onAction="#EscogerColor" prefHeight="90.0" prefWidth="148.0" style="-fx-background-color: #838383;" text="Escoger color" textFill="#fffefe">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -42,5 +43,6 @@
          </font>
       </Button>
       <TextField fx:id="IngresoExtension" layoutX="31.0" layoutY="181.0" prefHeight="39.0" prefWidth="74.0" />
+      <Rectangle fx:id="VistaColor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="410.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" width="103.0" />
    </children>
 </AnchorPane>
