@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javax.swing.JFileChooser;
 
 /**
@@ -21,7 +22,7 @@ import javax.swing.JFileChooser;
  * @author darin
  */
 public class FXMLDocumentController implements Initializable {
-    
+    private Stage stage;
     @FXML
     private Label label;
     @FXML
@@ -31,6 +32,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void BuscarRuta(){
         JFileChooser fc = new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int seleccion = fc.showOpenDialog(fc);
         if(seleccion == JFileChooser.APPROVE_OPTION){
             File fichero = fc.getSelectedFile();
@@ -38,6 +40,16 @@ public class FXMLDocumentController implements Initializable {
         }
     }
     
+    @FXML
+    public void Personalizar(){
+        CambiarAPersonalizar cambioP = new CambiarAPersonalizar();        
+        cambioP.start(new Stage());
+    }
+    
+    @FXML
+    public void Visualizar(){
+        
+    }
     
     
     @Override

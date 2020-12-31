@@ -23,12 +23,12 @@
             <Font name="Lucida Sans Demibold" size="21.0" />
          </font>
       </Label>
-      <Button fx:id="visualizar" layoutX="420.0" layoutY="157.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="161.0" style="-fx-background-color: #d43847;" text="Visualizar" textFill="#fcfcfc">
+      <Button fx:id="visualizar" layoutX="420.0" layoutY="157.0" mnemonicParsing="false" onAction="#Visualizar" prefHeight="39.0" prefWidth="161.0" style="-fx-background-color: #d43847;" text="Visualizar" textFill="#fcfcfc">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="420.0" layoutY="216.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="161.0" style="-fx-background-color: #20b1aa;" text="Personalizar" textFill="WHITE">
+      <Button layoutX="420.0" layoutY="216.0" mnemonicParsing="false" onAction="#Personalizar" prefHeight="39.0" prefWidth="161.0" style="-fx-background-color: #20b1aa;" text="Personalizar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

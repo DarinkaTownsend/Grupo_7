@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.media.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.PersonalizarController">
+   <children>
+      <ChoiceBox fx:id="Extensiones" layoutX="40.0" layoutY="115.0" prefHeight="39.0" prefWidth="261.0" />
+      <Button layoutX="111.0" layoutY="181.0" mnemonicParsing="false" onAction="#AgregarExtension" prefHeight="39.0" prefWidth="190.0" style="-fx-background-color: #20b1aa;" text="Agregar Extensión" textFill="#fcfcfc">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="40.0" layoutY="233.0" mnemonicParsing="false" onAction="#QuitarExtension" prefHeight="39.0" prefWidth="261.0" style="-fx-background-color: #20b1aa;" text="Quitar Extension" textFill="#fcfcfc">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="81.0" layoutY="320.0" mnemonicParsing="false" onAction="#AplicarCambios" prefHeight="39.0" prefWidth="221.0" style="-fx-background-color: #d43847;" text="Aplicar cambios" textFill="#fffefe">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="385.0" layoutY="137.0" mnemonicParsing="false" onAction="#EscogerColor" prefHeight="126.0" prefWidth="138.0" style="-fx-background-color: #838383;" text="Escoger color" textFill="#fffefe">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="195.0" layoutY="35.0" text="Personalizar">
+         <font>
+            <Font name="Lucida Sans Demibold" size="33.0" />
+         </font>
+      </Label>
+      <Button layoutX="339.0" layoutY="320.0" mnemonicParsing="false" onAction="#Regresar" prefHeight="39.0" prefWidth="221.0" style="-fx-background-color: #d43;" text="Regresar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="IngresoExtension" layoutX="31.0" layoutY="181.0" prefHeight="39.0" prefWidth="74.0" />
+   </children>
+</AnchorPane>
