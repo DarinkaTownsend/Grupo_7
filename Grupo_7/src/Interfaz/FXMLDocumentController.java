@@ -43,7 +43,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void Personalizar(){
         CambiarAPersonalizar cambioP = new CambiarAPersonalizar();        
-        cambioP.start(new Stage());
+        cambioP.start(new Stage());        
     }
     
     @FXML
@@ -56,5 +56,9 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    void setStage(Stage stage) {
+        this.stage=stage;
+    }
     
 }

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ColorPicker?>
@@ -9,9 +14,8 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.PersonalizarController">
+<AnchorPane id="AnchorPane" fx:id="Plano" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.PersonalizarController">
    <children>
-      <ChoiceBox fx:id="Extensiones" layoutX="40.0" layoutY="115.0" prefHeight="39.0" prefWidth="261.0" />
       <Button layoutX="111.0" layoutY="181.0" mnemonicParsing="false" onAction="#AgregarExtension" prefHeight="39.0" prefWidth="190.0" style="-fx-background-color: #20b1aa;" text="Agregar Extensión" textFill="#fcfcfc">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -41,5 +45,11 @@
       <Rectangle fx:id="VistaColor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="410.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" width="103.0" />
       <ColorPicker fx:id="colorPicker" layoutX="393.0" layoutY="208.0" onAction="#EscogerColor" />
       <Label layoutX="392.0" layoutY="181.0" prefHeight="17.0" prefWidth="82.0" text="Color:" />
+      <ComboBox fx:id="Extensiones" layoutX="35.0" layoutY="116.0" onAction="#IniciarCombo" prefHeight="39.0" prefWidth="271.0" promptText="Extensiones" />
+      <Label fx:id="mensaje" layoutX="111.0" layoutY="286.0" textFill="#eb0505">
+         <font>
+            <Font name="System Italic" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
