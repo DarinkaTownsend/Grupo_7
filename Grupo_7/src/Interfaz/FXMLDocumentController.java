@@ -70,6 +70,7 @@ public class FXMLDocumentController implements Initializable {
             return false;
         }if(ru.isFile()){
             mensaje.setText("Escoja una carpeta");
+            return false;
         }
         ruta=ru;
         return true;

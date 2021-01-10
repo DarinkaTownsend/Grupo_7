@@ -5,15 +5,27 @@
  */
 package Interfaz;
 
+import java.awt.AWTException;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
+
 
 /**
  * FXML Controller class
@@ -35,8 +47,21 @@ public class VisualizadorController implements Initializable {
         // TODO
     }
 
-    public void TomarCaptura() {
+    public void TomarCaptura() throws IOException {
         
+        try {
+            Robot robot = new Robot();
+            //Rectangle rectangulo = new Rectangle(1000,1000,1000,1000);
+            Rectangle rectangulo = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+
+            BufferedImage image = robot.createScreenCapture(rectangulo);
+            Image myImage = SwingFXUtils.toFXImage(image, null);
+            ImageIO.write(image, "jpg", new File("captura.jpg"));
+            mensajeGuardado.setText("Guardado!");
+
+        } catch (AWTException ex) {
+            Logger.getLogger(VisualizadorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     void setStage(Stage stage) {
