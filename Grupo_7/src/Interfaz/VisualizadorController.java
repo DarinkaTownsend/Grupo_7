@@ -5,12 +5,14 @@
  */
 package Interfaz;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 
 /**
@@ -34,7 +36,7 @@ public class VisualizadorController implements Initializable {
     }
 
     public void TomarCaptura() {
-
+        
     }
 
     void setStage(Stage stage) {
