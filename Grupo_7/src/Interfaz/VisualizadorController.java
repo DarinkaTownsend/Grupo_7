@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -25,16 +26,25 @@ public class VisualizadorController implements Initializable {
     private Label mensajeGuardado;
     @FXML
     private Button capturar;
-    
-    
-    
+    private Stage stage;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }   
-    
-    public void TomarCaptura(){
-    
     }
-    
+
+    public void TomarCaptura() {
+
+    }
+
+    void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public void regresar() {
+        Main main = new Main();
+        main.start(new Stage());
+
+        this.stage.close();
+    }
 }

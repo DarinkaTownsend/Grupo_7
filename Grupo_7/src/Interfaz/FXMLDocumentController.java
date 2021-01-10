@@ -29,6 +29,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label label;
     @FXML
+    private Label mensaje;
+    @FXML
     private AnchorPane ventana1;
     @FXML
     private TextField escribirRuta;
@@ -36,6 +38,8 @@ public class FXMLDocumentController implements Initializable {
     private Button visualizar;
     @FXML
     private ImageView image;
+    
+    public File ruta;
     @FXML
     public void BuscarRuta(){
         JFileChooser fc = new JFileChooser();
@@ -44,6 +48,7 @@ public class FXMLDocumentController implements Initializable {
         if(seleccion == JFileChooser.APPROVE_OPTION){
             File fichero = fc.getSelectedFile();
             escribirRuta.setText(fichero.getAbsolutePath());
+            ruta=fichero;
         }
     }
     
@@ -54,8 +59,30 @@ public class FXMLDocumentController implements Initializable {
         this.stage.close();
     }
     
+    
+    public boolean ComprobarRuta(){
+        File ru=new File(escribirRuta.getText());
+        if(escribirRuta.getText().isEmpty()){
+            mensaje.setText("Escoja Ruta");
+            return false;
+        }if(!ru.exists()){
+            mensaje.setText("La ruta no existe");
+            return false;
+        }if(ru.isFile()){
+            mensaje.setText("Escoja una carpeta");
+        }
+        ruta=ru;
+        return true;
+    }
+    
     @FXML
     public void Visualizar(){
+        
+        if (ComprobarRuta()) {
+            CambiarAVisualizar cambioV = new CambiarAVisualizar();
+            cambioV.start(new Stage());
+            this.stage.close();
+        }
         
     }
     

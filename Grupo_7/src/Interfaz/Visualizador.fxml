@@ -8,22 +8,21 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="627.0" style="-fx-background-color: #f5f5f5;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Interfaz.VisualizadorController">
+<AnchorPane id="AnchorPane" prefHeight="627.0" prefWidth="1020.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.VisualizadorController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="51.0" layoutY="-1.0" stroke="#f8f8f8" strokeType="INSIDE" style="-fx-fill: #20b1aa;" width="630.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="51.0" layoutY="-1.0" stroke="#f8f8f8" strokeType="INSIDE" style="-fx-fill: #20b1aa;" width="1028.0" />
       <Label fx:id="peso" layoutX="151.0" layoutY="11.0" text="Peso Total :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="capturar" layoutX="455.0" layoutY="3.0" mnemonicParsing="false" onAction="#TomarCaptura" prefHeight="27.0" prefWidth="168.0" style="-fx-background-color: #d43;" text="Tomar Captura" textFill="WHITE">
+      <Button fx:id="capturar" layoutX="852.0" layoutY="4.0" mnemonicParsing="false" onAction="#TomarCaptura" prefHeight="27.0" prefWidth="168.0" style="-fx-background-color: #d43;" text="Tomar Captura" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Label fx:id="mensajeGuardado" layoutX="368.0" layoutY="11.0" text="Guardado!" textFill="#1b0101" />
-      <Button layoutX="6.0" layoutY="4.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="132.0" style="-fx-background-color: #d43;" text="Regresar" textFill="#f8f8f8">
+      <Label fx:id="mensajeGuardado" layoutX="755.0" layoutY="10.0" textFill="#1b0101" />
+      <Button layoutX="6.0" layoutY="4.0" mnemonicParsing="false" onAction="#regresar" prefHeight="33.0" prefWidth="132.0" style="-fx-background-color: #d43;" text="Regresar" textFill="#f8f8f8">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
