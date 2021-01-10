@@ -124,6 +124,7 @@ public class PersonalizarController implements Initializable {
     public void Regresar(){
         CambiarAInicio cambioI= new CambiarAInicio();        
         cambioI.start(new Stage());
+        this.stage.close();
         
     }
     
