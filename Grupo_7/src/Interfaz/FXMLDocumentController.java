@@ -11,8 +11,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.swing.JFileChooser;
@@ -30,6 +33,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField escribirRuta;
     @FXML
+    private Button visualizar;
+    @FXML
+    private ImageView image;
+    @FXML
     public void BuscarRuta(){
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -43,7 +50,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void Personalizar(){
         CambiarAPersonalizar cambioP = new CambiarAPersonalizar();        
-        cambioP.start(new Stage());        
+        cambioP.start(new Stage());
+        this.stage.close();
     }
     
     @FXML
@@ -54,7 +62,7 @@ public class FXMLDocumentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        image.setImage(new Image("/recursos/fondo2.jpg"));
     }    
 
     void setStage(Stage stage) {

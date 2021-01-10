@@ -122,8 +122,13 @@ public class PersonalizarController implements Initializable {
     
     @FXML
     public void Regresar(){
+<<<<<<< Updated upstream
         CambiarAInicio cambioI= new CambiarAInicio();        
         cambioI.start(new Stage());
+=======
+        Main main= new Main();       
+        main.start(new Stage());
+>>>>>>> Stashed changes
         this.stage.close();
         
     }

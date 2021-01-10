@@ -5,6 +5,9 @@
  */
 package Interfaz;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,14 +21,23 @@ import javafx.stage.Stage;
 public class Main extends Application {
     
     @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+    public void start(Stage stage){
+        try {
+            FXMLLoader loader = new FXMLLoader();
         
-        Scene scene = new Scene(root);
+            Parent root = loader.load(getClass().getResourceAsStream("FXMLDocument.fxml"));
         
-        stage.setScene(scene);
-        stage.show();
-    }
+            final FXMLDocumentController inicio = loader.getController();
+            inicio.setStage(stage);
+            Scene scene = new Scene(root);             
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        }
 
     /**
      * @param args the command line arguments
