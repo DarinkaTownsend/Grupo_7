@@ -76,9 +76,13 @@ public class PersonalizarController implements Initializable {
     
     @FXML
     public void IniciarCombo(){
-        Color colorExtension = Extensiones.getValue().getColorExtension();
+        Color colorExtension;
+        if(Extensiones.getValue() == null){
+            Extensiones.setValue(Extensiones.getItems().get(0));
+        }
+        colorExtension = Extensiones.getValue().getColorExtension();
         VistaColor.setFill(colorExtension);
-    }
+        }
     
     public void llenarComboBox(){
         items = FXCollections.observableArrayList();
