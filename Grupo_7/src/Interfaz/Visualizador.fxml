@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.shape.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="627.0" prefWidth="1020.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.VisualizadorController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="627.0" prefWidth="1020.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.VisualizadorController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="51.0" layoutY="-1.0" stroke="#f8f8f8" strokeType="INSIDE" style="-fx-fill: #20b1aa;" width="1028.0" />
       <Label fx:id="peso" layoutX="151.0" layoutY="11.0" text="Peso Total :" textFill="WHITE">

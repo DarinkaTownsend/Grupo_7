@@ -23,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
@@ -41,18 +42,21 @@ public class VisualizadorController implements Initializable {
     @FXML
     private Button capturar;
     private Stage stage;
+    @FXML
+    private AnchorPane pane;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
 
+    @FXML
     public void TomarCaptura() throws IOException {
         
         try {
             Robot robot = new Robot();
-            //Rectangle rectangulo = new Rectangle(1000,1000,1000,1000);
-            Rectangle rectangulo = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+            Rectangle rectangulo = new Rectangle();
+            rectangulo.setFrame(stage.getX()+7,stage.getY(),stage.getWidth()-14,stage.getHeight()-7);
 
             BufferedImage image = robot.createScreenCapture(rectangulo);
             Image myImage = SwingFXUtils.toFXImage(image, null);
@@ -68,6 +72,7 @@ public class VisualizadorController implements Initializable {
         this.stage = stage;
     }
 
+    @FXML
     public void regresar() {
         Main main = new Main();
         main.start(new Stage());
