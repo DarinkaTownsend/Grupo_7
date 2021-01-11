@@ -51,4 +51,12 @@ public class ManejadorArchivos {
         
         return peso+" "+pesos[c];
     }
+    public static void leerArchivoColores(){
+        //TODO
+        
+    }
+    
+    public static void escribirArchivoColores(){
+        //TODO
+    }
 }
