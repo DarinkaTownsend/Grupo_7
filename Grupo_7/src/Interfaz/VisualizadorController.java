@@ -55,6 +55,7 @@ public class VisualizadorController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cargarContenido();
+        
     }
 
     @FXML
@@ -161,7 +162,7 @@ public class VisualizadorController implements Initializable {
 	}
         ext="."+ext;
         Color color=null;
-        for(ColorArchivo c :PersonalizarController.items ){
+        for(ColorArchivo c :FXMLDocumentController.items ){
             if(c.getExtension().equals(ext)){
                 color = c.getColorExtension();
                 break;

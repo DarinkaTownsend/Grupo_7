@@ -36,7 +36,7 @@ public class PersonalizarController implements Initializable {
     private TextField IngresoExtension=null;
     @FXML
     private ColorPicker colorPicker;
-    public static ObservableList<ColorArchivo> items;
+    
     @FXML
     private ComboBox<ColorArchivo> Extensiones;
     @FXML
@@ -58,8 +58,8 @@ public class PersonalizarController implements Initializable {
                 
             }else{
                 ColorArchivo nuevo=new ColorArchivo(IngresoExtension.getText(),colorPicker.getValue());
-                items.add(nuevo);
-                Extensiones.setItems(items);
+                FXMLDocumentController.items.add(nuevo);
+                Extensiones.setItems(FXMLDocumentController.items);
                 mensaje.setText("Extensión añadida");
                 IngresoExtension.setText("");
             }
@@ -84,31 +84,8 @@ public class PersonalizarController implements Initializable {
         VistaColor.setFill(colorExtension);
         }
     
-    public void llenarComboBox(){
-        items = FXCollections.observableArrayList();
-        Color azul = Color.web("#98c5ea");
-        Color azulClaro = Color.web("#97bbe8");
-        Color rojo = Color.web("#f4a59d");
-        Color naranja = Color.web("#e9967a");
-        Color verdeClaro = Color.web("#d0ece1");
-        Color verdeOscuro = Color.web("#91d2b9");
-        Color morado = Color.web("#d8bfd8");
-        Color AmarilloOscuro = Color.web("#efd52e");
-        Color AmarilloClaro = Color.web("#faf3c3");
-        Color cafe = Color.web("#e3b57e");
-
-        ColorArchivo word=new ColorArchivo(".doc",azul);
-        ColorArchivo word2=new ColorArchivo(".docx",azulClaro);
-        ColorArchivo excel=new ColorArchivo(".xlsx",verdeOscuro);
-        ColorArchivo powerPoint=new ColorArchivo(".ppt",naranja);
-        ColorArchivo pdf=new ColorArchivo(".pdf",rojo);
-        ColorArchivo imagenesJPG=new ColorArchivo(".jpg",AmarilloOscuro);
-        ColorArchivo imagenesPNG=new ColorArchivo(".png",AmarilloClaro);
-        ColorArchivo Texto=new ColorArchivo(".txt",morado);
-        ColorArchivo csv =new ColorArchivo(".csv",cafe);        
-        
-        items.addAll(word,word2,excel,powerPoint,pdf,imagenesPNG,imagenesJPG,Texto,csv);
-        Extensiones.setItems(items);
+    public void llenarComboBox(){        
+        Extensiones.setItems(FXMLDocumentController.items);
         //Plano.getChildren().add(Extensiones);
         
         
