@@ -39,7 +39,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ImageView image;
     
-    public File ruta;
+    public static File ruta;
     @FXML
     public void BuscarRuta(){
         JFileChooser fc = new JFileChooser();

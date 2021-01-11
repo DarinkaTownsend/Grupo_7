@@ -6,14 +6,15 @@
 package Interfaz;
 
 import java.awt.AWTException;
-import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
@@ -24,8 +25,14 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
+import programa.ManejadorArchivos;
 
 
 /**
@@ -47,7 +54,7 @@ public class VisualizadorController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        cargarContenido();
     }
 
     @FXML
@@ -55,7 +62,7 @@ public class VisualizadorController implements Initializable {
         
         try {
             Robot robot = new Robot();
-            Rectangle rectangulo = new Rectangle();
+            java.awt.Rectangle rectangulo = new java.awt.Rectangle();
             rectangulo.setFrame(stage.getX()+7,stage.getY(),stage.getWidth()-14,stage.getHeight()-7);
 
             BufferedImage image = robot.createScreenCapture(rectangulo);
@@ -78,5 +85,91 @@ public class VisualizadorController implements Initializable {
         main.start(new Stage());
 
         this.stage.close();
+    }
+    
+    private void cargarContenido(){
+        TreeMap<Long,File> map;
+        File archivo = FXMLDocumentController.ruta;
+        map = ManejadorArchivos.crearMapa(archivo);
+        HBox root = new HBox();
+        double tamaño = (double)ManejadorArchivos.tamCarpeta(archivo);
+        peso.setText(peso.getText()+ManejadorArchivos.ObtenerPeso(tamaño));
+        root.setPrefSize(pane.getWidth(),pane.getHeight()-51);
+        root.setLayoutY(51);
+        double xMax =root.getPrefWidth();
+        double yMax =root.getPrefHeight();
+        
+        root = crearTreeMap(root,tamaño,xMax,yMax,map);
+        
+        pane.getChildren().add(root);
+        
+    }
+    
+    private HBox crearTreeMap(HBox root, double tamaño, double xMax, double yMax, TreeMap<Long,File> mapa){
+        
+        for (Map.Entry<Long,File> entry : mapa.entrySet()) {
+            
+                double percent = entry.getKey()/tamaño;
+                if(entry.getValue().isDirectory()){
+                    VBox nBox = new VBox();
+                    nBox.setPrefSize(xMax*percent, yMax);
+                    TreeMap<Long,File> nMap = ManejadorArchivos.crearMapa(entry.getValue());
+                    double nTam = (double)ManejadorArchivos.tamCarpeta(entry.getValue());
+                    root.getChildren().add(crearTreeMap(nBox,nTam,xMax*percent,yMax,nMap));
+                }
+                else{
+                    Rectangle r = new Rectangle();
+                    r.setWidth(xMax*percent);
+                    r.setHeight(yMax);
+                    r.setFill(obtenerColor(entry.getValue()));
+                    root.getChildren().add(r);
+                }
+            
+        }
+        return root;
+    }
+    
+    private VBox crearTreeMap(VBox root, double tamaño, double xMax, double yMax, TreeMap<Long,File> mapa){
+        for (Map.Entry<Long,File> entry : mapa.entrySet()) {
+            
+                double percent = entry.getKey()/tamaño;
+                if(entry.getValue().isDirectory()){
+                    HBox nBox = new HBox();
+                    nBox.setPrefSize(xMax, yMax*percent);
+                    TreeMap<Long,File> nMap = ManejadorArchivos.crearMapa(entry.getValue());
+                    double nTam = (double)ManejadorArchivos.tamCarpeta(entry.getValue());
+                    root.getChildren().add(crearTreeMap(nBox,nTam,xMax,yMax*percent,nMap));
+                }
+                else{
+                    Rectangle r = new Rectangle();
+                    r.setWidth(xMax);
+                    r.setHeight(yMax*percent);
+                    r.setFill(obtenerColor(entry.getValue()));
+                    root.getChildren().add(r);
+                }
+            
+        }
+        return root;
+    }
+
+    private Paint obtenerColor(File arch) {
+	String fileName = arch.getName();
+	String ext = "";
+	int i = fileName.lastIndexOf('.');
+	if (i > 0) {
+	    ext = fileName.substring(i+1);
+	}
+        ext="."+ext;
+        Color color=null;
+        for(ColorArchivo c :PersonalizarController.items ){
+            if(c.getExtension().equals(ext)){
+                color = c.getColorExtension();
+                break;
+            }
+        }
+        if(color == null)
+            color = Color.GRAY;
+        
+        return color;
     }
 }

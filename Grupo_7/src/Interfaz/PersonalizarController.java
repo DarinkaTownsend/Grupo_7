@@ -36,7 +36,7 @@ public class PersonalizarController implements Initializable {
     private TextField IngresoExtension=null;
     @FXML
     private ColorPicker colorPicker;
-    ObservableList<ColorArchivo> items;
+    public static ObservableList<ColorArchivo> items;
     @FXML
     private ComboBox<ColorArchivo> Extensiones;
     @FXML
