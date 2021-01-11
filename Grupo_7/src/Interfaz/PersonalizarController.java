@@ -97,8 +97,14 @@ public class PersonalizarController implements Initializable {
     
 
     @FXML
-    public void AplicarCambios(){
-        
+    public void CambiarColor(){
+        if(Extensiones.getValue()==null){
+            mensaje.setText("Escoja una extensión de la lista");
+        }else{
+            ColorArchivo cambiar = Extensiones.getValue();
+            cambiar.setColorExtension(colorPicker.getValue());
+            mensaje.setText("Color cambiado");
+        }
     }
     
     @FXML

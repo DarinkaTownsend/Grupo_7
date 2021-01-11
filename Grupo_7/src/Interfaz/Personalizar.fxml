@@ -26,7 +26,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="81.0" layoutY="320.0" mnemonicParsing="false" onAction="#AplicarCambios" prefHeight="39.0" prefWidth="221.0" style="-fx-background-color: #d43847;" text="Aplicar cambios" textFill="#fffefe">
+      <Button layoutX="40.0" layoutY="287.0" mnemonicParsing="false" onAction="#CambiarColor" prefHeight="39.0" prefWidth="261.0" style="-fx-background-color: #20b1aa;" text="Cambiar Color" textFill="#fffefe">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -36,7 +36,7 @@
             <Font name="Lucida Sans Demibold" size="33.0" />
          </font>
       </Label>
-      <Button layoutX="339.0" layoutY="320.0" mnemonicParsing="false" onAction="#Regresar" prefHeight="39.0" prefWidth="221.0" style="-fx-background-color: #d43;" text="Regresar" textFill="WHITE">
+      <Button layoutX="351.0" layoutY="287.0" mnemonicParsing="false" onAction="#Regresar" prefHeight="39.0" prefWidth="221.0" style="-fx-background-color: #d43;" text="Regresar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -46,7 +46,7 @@
       <ColorPicker fx:id="colorPicker" layoutX="393.0" layoutY="208.0" onAction="#EscogerColor" />
       <Label layoutX="392.0" layoutY="181.0" prefHeight="17.0" prefWidth="82.0" text="Color:" />
       <ComboBox fx:id="Extensiones" layoutX="35.0" layoutY="116.0" onAction="#IniciarCombo" prefHeight="39.0" prefWidth="271.0" promptText="Extensiones" />
-      <Label fx:id="mensaje" layoutX="111.0" layoutY="286.0" textFill="#eb0505">
+      <Label fx:id="mensaje" layoutX="125.0" layoutY="347.0" textFill="#eb0505">
          <font>
             <Font name="System Italic" size="14.0" />
          </font>
