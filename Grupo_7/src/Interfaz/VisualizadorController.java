@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 import java.util.logging.Level;
@@ -51,6 +52,9 @@ public class VisualizadorController implements Initializable {
     private Stage stage;
     @FXML
     private AnchorPane pane;
+    @FXML
+    private HBox box;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -92,17 +96,13 @@ public class VisualizadorController implements Initializable {
         TreeMap<Long,File> map;
         File archivo = FXMLDocumentController.ruta;
         map = ManejadorArchivos.crearMapa(archivo);
-        HBox root = new HBox();
+        
         double tamaño = (double)ManejadorArchivos.tamCarpeta(archivo);
         peso.setText(peso.getText()+ManejadorArchivos.ObtenerPeso(tamaño));
-        root.setPrefSize(pane.getWidth(),pane.getHeight()-51);
-        root.setLayoutY(51);
-        double xMax =root.getPrefWidth();
-        double yMax =root.getPrefHeight();
+        double xMax =box.getPrefWidth();
+        double yMax =box.getPrefHeight();
         
-        root = crearTreeMap(root,tamaño,xMax,yMax,map);
-        
-        pane.getChildren().add(root);
+        box = crearTreeMap(box,tamaño,xMax,yMax,map);
         
     }
     
