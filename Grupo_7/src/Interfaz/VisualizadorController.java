@@ -6,14 +6,13 @@
 package Interfaz;
 
 import java.awt.AWTException;
+import java.awt.Desktop;
 import java.awt.Robot;
-import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
-import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 import java.util.logging.Level;
@@ -21,10 +20,10 @@ import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -49,11 +48,14 @@ public class VisualizadorController implements Initializable {
     private Label mensajeGuardado;
     @FXML
     private Button capturar;
+    
     private Stage stage;
     @FXML
     private AnchorPane pane;
     @FXML
     private HBox box;
+    @FXML
+    private HBox base;
 
 
     @Override
@@ -96,17 +98,17 @@ public class VisualizadorController implements Initializable {
         TreeMap<Long,File> map;
         File archivo = FXMLDocumentController.ruta;
         map = ManejadorArchivos.crearMapa(archivo);
-        
-        double tamaño = (double)ManejadorArchivos.tamCarpeta(archivo);
+        boolean plantilla = true;
+        long tamaño = ManejadorArchivos.tamCarpeta(archivo);
         peso.setText(peso.getText()+ManejadorArchivos.ObtenerPeso(tamaño));
         double xMax =box.getPrefWidth();
         double yMax =box.getPrefHeight();
         
-        box = crearTreeMap(box,tamaño,xMax,yMax,map);
+        box = crearTreeMap(box,tamaño,xMax,yMax,map,plantilla);
         
     }
     
-    private HBox crearTreeMap(HBox root, double tamaño, double xMax, double yMax, TreeMap<Long,File> mapa){
+    private HBox crearTreeMap(HBox root, double tamaño, double xMax, double yMax, TreeMap<Long,File> mapa, boolean plantilla){
         
         for (Map.Entry<Long,File> entry : mapa.entrySet()) {
             
@@ -116,7 +118,9 @@ public class VisualizadorController implements Initializable {
                     nBox.setPrefSize(xMax*percent, yMax);
                     TreeMap<Long,File> nMap = ManejadorArchivos.crearMapa(entry.getValue());
                     double nTam = (double)ManejadorArchivos.tamCarpeta(entry.getValue());
-                    root.getChildren().add(crearTreeMap(nBox,nTam,xMax*percent,yMax,nMap));
+                    root.getChildren().add(crearTreeMap(nBox,nTam,xMax*percent,yMax,nMap,false));
+                    if(plantilla)
+                        colocarUbicacion(xMax*percent,yMax,entry.getValue().getName(),entry.getKey(),entry.getValue());
                 }
                 else{
                     Rectangle r = new Rectangle();
@@ -124,13 +128,15 @@ public class VisualizadorController implements Initializable {
                     r.setHeight(yMax);
                     r.setFill(obtenerColor(entry.getValue()));
                     root.getChildren().add(r);
+                    if(plantilla)                    
+                        colocarUbicacion(xMax*percent,yMax,entry.getValue().getName(),entry.getKey(),entry.getValue());
                 }
             
         }
         return root;
     }
     
-    private VBox crearTreeMap(VBox root, double tamaño, double xMax, double yMax, TreeMap<Long,File> mapa){
+    private VBox crearTreeMap(VBox root, double tamaño, double xMax, double yMax, TreeMap<Long,File> mapa, boolean plantilla){
         for (Map.Entry<Long,File> entry : mapa.entrySet()) {
             
                 double percent = entry.getKey()/tamaño;
@@ -139,7 +145,7 @@ public class VisualizadorController implements Initializable {
                     nBox.setPrefSize(xMax, yMax*percent);
                     TreeMap<Long,File> nMap = ManejadorArchivos.crearMapa(entry.getValue());
                     double nTam = (double)ManejadorArchivos.tamCarpeta(entry.getValue());
-                    root.getChildren().add(crearTreeMap(nBox,nTam,xMax,yMax*percent,nMap));
+                    root.getChildren().add(crearTreeMap(nBox,nTam,xMax,yMax*percent,nMap,plantilla));
                 }
                 else{
                     Rectangle r = new Rectangle();
@@ -172,5 +178,25 @@ public class VisualizadorController implements Initializable {
             color = Color.GRAY;
         
         return color;
+    }
+    
+    private void abrirUbicacion(File archivo){
+        Desktop desktop = Desktop.getDesktop();
+        try {
+            desktop.open(archivo);
+        } catch (IOException ex) {
+            Logger.getLogger(VisualizadorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void colocarUbicacion(double xMax, double yMax, String nombre, long peso, File archivo){
+        VBox newBox = new VBox();
+        newBox.setAlignment(Pos.TOP_LEFT);
+        newBox.setPrefSize(xMax, yMax);
+        Label lbl = new Label(nombre+": "+ManejadorArchivos.ObtenerPeso(peso));
+        lbl.setWrapText(true);
+        newBox.getChildren().add(lbl);
+        newBox.setOnMouseClicked(e->abrirUbicacion(archivo));
+        base.getChildren().add(newBox);
     }
 }

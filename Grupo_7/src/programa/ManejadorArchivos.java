@@ -42,14 +42,14 @@ public class ManejadorArchivos {
     return length;
     }
     
-    public static String ObtenerPeso(double peso){
+    public static String ObtenerPeso(long peso){
         int c=0;
         while(peso>1024.0){
             peso/=1024;
             c++;
         }
         
-        return peso+" "+pesos[c];
+        return (int)peso+" "+pesos[c];
     }
     public static void leerArchivoColores(){
         //TODO

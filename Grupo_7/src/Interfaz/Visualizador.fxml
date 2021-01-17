@@ -27,5 +27,6 @@
          </font>
       </Button>
       <HBox fx:id="box" alignment="TOP_CENTER" layoutX="1.0" layoutY="50.0" prefHeight="577.0" prefWidth="1028.0" />
+      <HBox fx:id="base" alignment="TOP_CENTER" layoutY="50.0" prefHeight="587.0" prefWidth="1039.0" />
    </children>
 </AnchorPane>
