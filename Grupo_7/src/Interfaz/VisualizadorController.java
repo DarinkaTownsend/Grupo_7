@@ -8,6 +8,7 @@ package Interfaz;
 import java.awt.AWTException;
 import java.awt.Desktop;
 import java.awt.Robot;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -71,11 +72,9 @@ public class VisualizadorController implements Initializable {
         
         try {
             Robot robot = new Robot();
-            java.awt.Rectangle rectangulo = new java.awt.Rectangle();
-            rectangulo.setFrame(stage.getX()+7,stage.getY(),stage.getWidth()-14,stage.getHeight()-7);
+            java.awt.Rectangle rectangulo = new java.awt.Rectangle(Toolkit.getDefaultToolkit().getScreenSize());           
 
-            BufferedImage image = robot.createScreenCapture(rectangulo);
-            Image myImage = SwingFXUtils.toFXImage(image, null);
+            BufferedImage image = robot.createScreenCapture(rectangulo);            
             ImageIO.write(image, "jpg", new File("captura.jpg"));
             mensajeGuardado.setText("Guardado!");
 
