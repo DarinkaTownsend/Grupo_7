@@ -66,13 +66,74 @@ public class ManejadorArchivos {
         
         return (int)peso+" "+pesos[c];
     }
-
-    
-    
-    
-   
+    public static void leerArchivoColores(String nombreArchivo){
+        File fichero = new File(nombreArchivo);
+        items = FXCollections.observableArrayList();  
+        try (BufferedReader entrada = new BufferedReader(new FileReader(fichero))) {
+            String readLine;
+            while((readLine = entrada.readLine()) != null){
+                String[] elementos=readLine.split(",");
+                Color colorAgre = Color.web(elementos[1]);      
+                ColorArchivo exten =new ColorArchivo(elementos[0],colorAgre);            
+                items.add(exten);
+            }
+            entrada.close();
+            
+        } catch (FileNotFoundException exFNF) {
+            System.err.println(exFNF.getMessage());
+        } catch (IOException exIO) {
+            System.err.println(exIO.getMessage());
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        
     }
+    
+    public static void escribirArchivoColores(String nombreArchivo, ColorArchivo color) {
+        Color colorA = color.getColorExtension();
+        String ColorHexa = sacarExtension(colorA);
+        String exte = color.getExtension();
+        String linea = exte + "," + ColorHexa;
+        try (BufferedWriter escri = new BufferedWriter(new FileWriter(nombreArchivo,true))) {
 
+            escri.write(linea+"\n");
+            escri.close();
+            // Escribimos linea a linea en el fichero
 
+        } catch (FileNotFoundException ex2) {
+            System.out.println("Mensaje error 2: " + ex2.getMessage());
+        } catch (IOException a) {
+            System.out.println(a.getCause());
+        }
+    }
+    public static String sacarExtension(Color color) {
+        int r = ((int) Math.round(color.getRed() * 255)) << 24;
+        int g = ((int) Math.round(color.getGreen() * 255)) << 16;
+        int b = ((int) Math.round(color.getBlue() * 255)) << 8;
+        int a = ((int) Math.round(color.getOpacity() * 255));
+        return String.format("#%08X", (r + g + b + a));
+    }
+    
+    public static void RefrescarArchivo(String nombreArchivo){
+        
+        
+        try (BufferedWriter escri = new BufferedWriter(new FileWriter(nombreArchivo))) {
+            for (ColorArchivo co : items) {
+                Color colorA = co.getColorExtension();
+                String ColorHexa = sacarExtension(colorA);
+                String exte = co.getExtension();
+                String linea = exte + "," + ColorHexa;
+                escri.write(linea + "\n");
+            }
+            
+            escri.close();
+            // Escribimos linea a linea en el fichero
 
-
+        } catch (FileNotFoundException ex2) {
+            System.out.println("Mensaje error 2: " + ex2.getMessage());
+        } catch (IOException a) {
+            System.out.println(a.getCause());
+        }
+    }
+    }
