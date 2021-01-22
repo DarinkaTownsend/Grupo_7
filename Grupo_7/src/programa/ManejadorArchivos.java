@@ -70,11 +70,13 @@ public class ManejadorArchivos {
         File fichero = new File(nombreArchivo);
         items = FXCollections.observableArrayList();  
         try (BufferedReader entrada = new BufferedReader(new FileReader(fichero))) {
-            String readLine = entrada.readLine();
-            String[] elementos=readLine.split(",");
-            Color colorAgre = Color.web(elementos[1]);      
-            ColorArchivo exten =new ColorArchivo(elementos[0],colorAgre);            
-            items.add(exten);
+            String readLine;
+            while((readLine = entrada.readLine()) != null){
+                String[] elementos=readLine.split(",");
+                Color colorAgre = Color.web(elementos[1]);      
+                ColorArchivo exten =new ColorArchivo(elementos[0],colorAgre);            
+                items.add(exten);
+            }
             entrada.close();
             
         } catch (FileNotFoundException exFNF) {
