@@ -5,9 +5,18 @@
  */
 package programa;
 
+import Interfaz.ColorArchivo;
+import static Interfaz.FXMLDocumentController.items;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.TreeMap;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javax.swing.JFileChooser;
 
 /**
@@ -51,12 +60,35 @@ public class ManejadorArchivos {
         
         return (int)peso+" "+pesos[c];
     }
-    public static void leerArchivoColores(){
+
+    /**
+     *
+     * @param nombreArchivo
+     * @return
+     */
+    public static void leerArchivoColores(String nombreArchivo){
+        File fichero = new File(nombreArchivo);
+        items = FXCollections.observableArrayList();  
+        try (BufferedReader entrada = new BufferedReader(new FileReader(fichero))) {
+            String readLine = entrada.readLine();
+            String[] elementos=readLine.split(",");
+            Color colorAgre = Color.web(elementos[1]);      
+            ColorArchivo exten =new ColorArchivo(elementos[0],colorAgre);            
+            items.add(exten);
+            entrada.close();
+            
+        } catch (FileNotFoundException exFNF) {
+            System.err.println(exFNF.getMessage());
+        } catch (IOException exIO) {
+            System.err.println(exIO.getMessage());
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
+        }
         
         
     }
     
-    public static void escribirArchivoColores(){
+    public static void escribirArchivoColores(String extension,Color colorAgregar){
         
     }
 }

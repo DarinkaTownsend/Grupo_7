@@ -23,6 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javax.swing.JFileChooser;
+import programa.ManejadorArchivos;
 
 /**
  *
@@ -49,13 +50,7 @@ public class FXMLDocumentController implements Initializable {
     
     
     
-    public void CrearListaColores(){
-        items = FXCollections.observableArrayList();       
-        
-        Color cafe = Color.web("#e3b57e");      
-        ColorArchivo csv =new ColorArchivo(".csv",cafe);        
-        
-    }
+    
     public void BuscarRuta(){
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -106,7 +101,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         image.setImage(new Image("/recursos/fondo2.jpg"));
-        CrearListaColores();
+        ManejadorArchivos.leerArchivoColores("archivoColores.txt");  
     }    
 
     void setStage(Stage stage) {
