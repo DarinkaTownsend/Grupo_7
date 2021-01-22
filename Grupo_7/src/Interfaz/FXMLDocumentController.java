@@ -101,7 +101,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         image.setImage(new Image("/recursos/fondo2.jpg"));
-        ManejadorArchivos.leerArchivoColores("archivoColores.txt");  
+        ManejadorArchivos.leerArchivoColores("src/recursos/archivoColores.txt");  
     }    
 
     void setStage(Stage stage) {
