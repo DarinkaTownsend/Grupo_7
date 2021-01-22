@@ -30,6 +30,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import programa.ManejadorArchivos;
@@ -195,6 +197,8 @@ public class VisualizadorController implements Initializable {
         newBox.setPrefSize(xMax, yMax);
         Label lbl = new Label(nombre+": "+ManejadorArchivos.ObtenerPeso(peso));
         lbl.setWrapText(true);
+        lbl.setTextFill(Color.web("#ffffff"));
+        lbl.setFont(Font.font("Verdana",FontWeight.BOLD,12));
         newBox.getChildren().add(lbl);
         newBox.setOnMouseClicked(e->abrirUbicacion(archivo));
         base.getChildren().add(newBox);
