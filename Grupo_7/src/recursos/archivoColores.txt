@@ -1,0 +1,9 @@
+.doc,#98c5ea
+.docx,#97bbe8
+.xlsx,#f4a59d
+.ppt,#e9967a
+.pdf,#d0ece1
+.jpg,#91d2b9
+.png,#d8bfd8
+.txt,#efd52e
+.csv,#faf3c3
