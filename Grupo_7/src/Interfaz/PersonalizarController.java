@@ -20,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import programa.ManejadorArchivos;
 /**
  * FXML Controller class
  *
@@ -58,7 +59,8 @@ public class PersonalizarController implements Initializable {
                 
             }else{
                 ColorArchivo nuevo=new ColorArchivo(IngresoExtension.getText(),colorPicker.getValue());
-                FXMLDocumentController.items.add(nuevo);
+                ManejadorArchivos.escribirArchivoColores("src/recursos/archivoColores.txt", nuevo);                
+                ManejadorArchivos.leerArchivoColores("src/recursos/archivoColores.txt");
                 Extensiones.setItems(FXMLDocumentController.items);
                 mensaje.setText("Extensión añadida");
                 IngresoExtension.setText("");
@@ -71,6 +73,8 @@ public class PersonalizarController implements Initializable {
     public void QuitarExtension(){
         ColorArchivo remover = Extensiones.getValue();
         Extensiones.getItems().remove(remover);
+        FXMLDocumentController.items.remove(remover);
+        ManejadorArchivos.RefrescarArchivo("src/recursos/archivoColores.txt");
         mensaje.setText("Extensión removida");      
     }
     
@@ -103,6 +107,7 @@ public class PersonalizarController implements Initializable {
         }else{
             ColorArchivo cambiar = Extensiones.getValue();
             cambiar.setColorExtension(colorPicker.getValue());
+            ManejadorArchivos.RefrescarArchivo("src/recursos/archivoColores.txt");
             mensaje.setText("Color cambiado");
         }
     }
