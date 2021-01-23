@@ -1,6 +1,6 @@
 .doc,#98C5EAFF
-.docx,#B34D1AFF
-.xlsx,#4D3399FF
+.docx,#1A3399FF
+.xlsx,#4D804DFF
 .ppt,#E9967AFF
 .pdf,#D0ECE1FF
 .png,#D8BFD8FF
